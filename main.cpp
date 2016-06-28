@@ -2,7 +2,7 @@
 
 int main()
 {
-//    Timer t;
-    face_detection(root + "lfw.txt", root + "result.txt");
-//    t.elapsed_seconds();
+    cv::Mat img = cv::imread("tmp.jpg");
+    cv::imshow("test", face_detection(img));
+    cv::waitKey();
 }

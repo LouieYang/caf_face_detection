@@ -173,109 +173,101 @@ void draw_boxes(std::vector<boundingbox>& bd, cv::Mat& img)
     }
 }
 
+std::vector<double> scale_list(const cv::Mat &img)
+{
+    int min             = 0;
+    int max             = 0;
+    double delim        = 5;
+    double factor       = 0.7937;
+    double factor_count = 0;
+    
+    std::vector<double> scales;
+    
+    max = MAX(img.cols, img.rows);
+    min = MIN(img.cols, img.rows);
+    
+    //        delim = 2500 / max;
+    while (delim > 1 + 1e-4)
+    {
+        scales.push_back(delim);
+        delim *= factor;
+    }
+    
+    while (min >= 227)
+    {
+        scales.push_back(pow(factor, factor_count++));
+        min *= factor;
+    }
+    
+    std::cout << "Image size: " << img.cols << "(Width)" << ' ' << img.rows <<  "(Height)" <<'\n';
+    std::cout << "Scaling: ";
+    std::for_each(scales.begin(), scales.end(), [](double scale){ std::cout << scale << ' '; });
+    std::cout << '\n';
+    return scales;
+}
+
+void updatePrototxt(int rows, int cols)
+{
+    std::ifstream fin("face_full_conv.prototxt", std::ios::in);
+    std::ofstream fout("face_full_conv2.prototxt", std::ios::out);
+    int index = 0;
+    for (std::string line; std::getline(fin, line); index++)
+    {
+        if (index == 5)
+        {
+            fout << "input_dim: " << rows << '\n';
+        }
+        else if (index == 6)
+        {
+            fout << "input_dim: " << cols << '\n';
+        }
+        else
+        {
+            fout << line << '\n';
+        }
+    }
+    fin.close();
+    fout.close();
+}
+
 void face_detection(std::string imgList, std::string resultList)
 {
     std::vector<std::string> imgFiles;
     read_image_list(imgFiles, imgList);
     
-    std::fstream output_file(resultList, std::ios::out);
+    std::fstream output_file(resultList, std::ios::app|std::ios::out);
     output_file << "#faceID" << '\t' << "imagePath" << '\t';
     output_file << "faceRect.y" << '\t' << "faceRect.x" << '\t';
     output_file << "faceRect.w" << '\t' << "faceRect.h" << '\n';
     
     for (int i = 0; i < imgFiles.size(); i++)
     {
-        int min             = 0;
-        int max             = 0;
-        double delim        = 5;
-        double factor       = 0.7937;
-        double factor_count = 0;
-        
-        std::vector<double> scales;
-        
-        
-        cv::Mat img = cv::imread(root + "/test/" + imgFiles[i]);
-        
-
-        max = MAX(img.cols, img.rows);
-        min = MIN(img.cols, img.rows);
-        
-//        delim = 2500 / max;
-        while (delim > 1 + 1e-4)
-        {
-            scales.push_back(delim);
-            delim *= factor;
-        }
-        
-        while (min >= 227)
-        {
-            scales.push_back(pow(factor, factor_count++));
-            min *= factor;
-        }
-        
-        std::cout << "Image size: " << img.cols << "(Width)" << ' ' << img.rows <<  "(Height)" <<'\n';
-        std::cout << "Scaling: ";
-        std::for_each(scales.begin(), scales.end(), [](double scale){ std::cout << scale << ' '; });
-        std::cout << '\n';
-        
+        cv::Mat img = cv::imread(imgFiles[i]);
+        std::vector<double> scales(scale_list(img));
         std::vector<boundingbox> bd;
-
         for (int j = 0; j < scales.size(); j++)
         {
             cv::Mat scale_img;
             cv::resize(img, scale_img, cv::Size(img.cols * scales[j], img.rows * scales[j]));
-            
-            std::ifstream fin(root + "face_full_conv.prototxt", std::ios::in);
-            std::ofstream fout(root + "face_full_conv2.prototxt", std::ios::out);
-            int index = 0;
-            for (std::string line; std::getline(fin, line); index++)
-            {
-                if (index == 5)
-                {
-                    fout << "input_dim: " << scale_img.rows << '\n';
-                }
-                else if (index == 6)
-                {
-                    fout << "input_dim: " << scale_img.cols << '\n';
-                }
-                else
-                {
-                    fout << line << '\n';
-                }
-            }
-            fin.close();
-            fout.close();
+            updatePrototxt(scale_img.rows, scale_img.cols);
             
             std::vector<cv::Mat> channels;
+            scale_img.convertTo(scale_img, CV_32FC3);
+
             cv::split(scale_img, channels);
+            channels[0] -= ILSVRC_BLUE_MEAN;
+            channels[1] -= ILSVRC_GREEN_MEAN;
+            channels[2] -= ILSVRC_RED_MEAN;
             
-            cv::Mat& blue_channel  = channels[0];
-            cv::Mat& green_channel = channels[1];
-            cv::Mat& red_channel   = channels[2];
+            std::shared_ptr<caffe::Net<float>>
+            net(new caffe::Net<float>("face_full_conv2.prototxt",
+                                      caffe::Phase::TEST));
+            net->CopyTrainedLayersFrom("face_full_conv.caffemodel");
             
+            OpenCV2Blob(channels, net);
             
-            std::vector<MatrixXf> rgb_img;
-            rgb_img.push_back(OpenCV2Eigen(blue_channel));
-            rgb_img.push_back(OpenCV2Eigen(green_channel));
-            rgb_img.push_back(OpenCV2Eigen(red_channel));
-            
-            rgb_img[0].array() -= red_channel_mean;
-            rgb_img[1].array() -= green_channel_mean;
-            rgb_img[2].array() -= blue_channel_mean;
-        
-            
-            boost::shared_ptr<caffe::Net<float>> net(new caffe::Net<float>(root + "face_full_conv2.prototxt", caffe::Phase::TEST));
-            net->CopyTrainedLayersFrom(root + "face_full_conv.caffemodel");
-            
-            std::vector<std::vector<Eigen::MatrixXf>> rgb_imgs;
-            rgb_imgs.push_back(rgb_img);
-            
-            Eigen2Blob(rgb_imgs, net);
-            
-            Timer t;
             net->ForwardPrefilled();
             caffe::Blob<float>* output_layer = net->output_blobs()[0];
-            std::cout << t.elapsed_seconds() << '\n';
             
             float* data = const_cast<float*>(output_layer->cpu_data() + output_layer->shape(2) * output_layer->shape(3));
             
@@ -283,8 +275,6 @@ void face_detection(std::string imgList, std::string resultList)
             
             generate_bounding_box(prob, scales[j], bd);
         }
-
-
         
         std::vector<boundingbox> bd1;
         std::vector<boundingbox> bdf;
@@ -294,13 +284,54 @@ void face_detection(std::string imgList, std::string resultList)
         for (int k = 0; k < bdf.size(); k++)
         {
             output_file << i << '\t' << imgFiles[i] << '\t';
-            output_file << int(bdf[k].first.y) << '\t' << int(bdf[k].first.x) << '\t';
-            output_file << int(bdf[k].first.width) << '\t' << int(bdf[k].first.height) << '\n';
+            output_file << int(bdf[k].first.y) << '\t'
+            << int(bdf[k].first.x) << '\t';
+            output_file << int(bdf[k].first.width) << '\t'
+            << int(bdf[k].first.height) << '\n';
         }
-//        draw_boxes(bdf, img);
-
-//        std::stringstream ss;
-//        ss << root << "result/" << i << ".jpg";
-//        cv::imwrite(ss.str(), img);
     }
+}
+
+cv::Mat &face_detection(cv::Mat &img)
+{
+    std::vector<double> scales(scale_list(img));
+    std::vector<boundingbox> bd;
+    for (int j = 0; j < scales.size(); j++)
+    {
+        cv::Mat scale_img;
+        cv::resize(img, scale_img, cv::Size(img.cols * scales[j], img.rows * scales[j]));
+        updatePrototxt(scale_img.rows, scale_img.cols);
+        
+        std::vector<cv::Mat> channels;
+        scale_img.convertTo(scale_img, CV_32FC3);
+        
+        cv::split(scale_img, channels);
+        channels[0] -= ILSVRC_BLUE_MEAN;
+        channels[1] -= ILSVRC_GREEN_MEAN;
+        channels[2] -= ILSVRC_RED_MEAN;
+        
+        std::shared_ptr<caffe::Net<float>>
+        net(new caffe::Net<float>("face_full_conv2.prototxt",
+                                  caffe::Phase::TEST));
+        net->CopyTrainedLayersFrom("face_full_conv.caffemodel");
+        
+        OpenCV2Blob(channels, net);
+        
+        net->ForwardPrefilled();
+        caffe::Blob<float>* output_layer = net->output_blobs()[0];
+        
+        float* data = const_cast<float*>(output_layer->cpu_data() + output_layer->shape(2) * output_layer->shape(3));
+        
+        Eigen::Map<Eigen::Matrix<float, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>> prob(data, output_layer->shape(2), output_layer->shape(3));
+        
+        generate_bounding_box(prob, scales[j], bd);
+    }
+    
+    std::vector<boundingbox> bd1;
+    std::vector<boundingbox> bdf;
+    nms_max(bd, bd1);
+    nms_average(bd1, bdf);
+
+    draw_boxes(bdf, img);
+    return img;
 }
