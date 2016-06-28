@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD027A971BFF444800EAFB37 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD027A961BFF444800EAFB37 /* main.cpp */; };
+		CD066BD31C238E050019667C /* libcaffe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD066BD11C238E050019667C /* libcaffe.a */; };
+		CD066BD41C238E050019667C /* libcaffe.so in Frameworks */ = {isa = PBXBuildFile; fileRef = CD066BD21C238E050019667C /* libcaffe.so */; };
+		CD066BDC1C238E6A0019667C /* libopencv_highgui.2.4.11.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD066BD61C238E6A0019667C /* libopencv_highgui.2.4.11.dylib */; };
+		CD066BE11C238E6A0019667C /* libopencv_imgproc.2.4.11.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD066BDB1C238E6A0019667C /* libopencv_imgproc.2.4.11.dylib */; };
+		CD066BE81C238F230019667C /* libopencv_contrib.2.4.11.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD066BE21C238F230019667C /* libopencv_contrib.2.4.11.dylib */; };
+		CD066BEB1C238F230019667C /* libopencv_core.2.4.11.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD066BE51C238F230019667C /* libopencv_core.2.4.11.dylib */; };
+		CD066C241C2390340019667C /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD066C201C2390340019667C /* libboost_system.a */; };
+		CD76CE171D2299AE00EED821 /* libglog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD76CE161D2299AE00EED821 /* libglog.a */; };
+		CDA0AAFB1C0A8DF800A67EB9 /* DataTransformer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDA0AAF71C0A8DF800A67EB9 /* DataTransformer.cpp */; };
+		CDA3A6C11C11A971004A7B5A /* face_detection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDA3A6BF1C11A971004A7B5A /* face_detection.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CD027A911BFF444800EAFB37 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CD027A931BFF444800EAFB37 /* integrated_caffe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = integrated_caffe; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD027A961BFF444800EAFB37 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		CD066BD11C238E050019667C /* libcaffe.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcaffe.a; path = ../../../../../../caffe/.build_release/lib/libcaffe.a; sourceTree = "<group>"; };
+		CD066BD21C238E050019667C /* libcaffe.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcaffe.so; path = ../../../../../../caffe/.build_release/lib/libcaffe.so; sourceTree = "<group>"; };
+		CD066BD61C238E6A0019667C /* libopencv_highgui.2.4.11.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.2.4.11.dylib; path = ../../../../../../../../usr/local/lib/libopencv_highgui.2.4.11.dylib; sourceTree = "<group>"; };
+		CD066BDB1C238E6A0019667C /* libopencv_imgproc.2.4.11.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.2.4.11.dylib; path = ../../../../../../../../usr/local/lib/libopencv_imgproc.2.4.11.dylib; sourceTree = "<group>"; };
+		CD066BE21C238F230019667C /* libopencv_contrib.2.4.11.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_contrib.2.4.11.dylib; path = ../../../../../../../../usr/local/lib/libopencv_contrib.2.4.11.dylib; sourceTree = "<group>"; };
+		CD066BE51C238F230019667C /* libopencv_core.2.4.11.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.2.4.11.dylib; path = ../../../../../../../../usr/local/lib/libopencv_core.2.4.11.dylib; sourceTree = "<group>"; };
+		CD066C201C2390340019667C /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../../../../usr/local/Cellar/boost/1.59.0/lib/libboost_system.a; sourceTree = "<group>"; };
+		CD76CE161D2299AE00EED821 /* libglog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglog.a; path = /usr/local/Cellar/glog/0.3.4/lib/libglog.a; sourceTree = "<absolute>"; };
+		CDA0AAF71C0A8DF800A67EB9 /* DataTransformer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataTransformer.cpp; sourceTree = "<group>"; };
+		CDA0AAF81C0A8DF800A67EB9 /* DataTransformer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataTransformer.hpp; sourceTree = "<group>"; };
+		CDA3A6BF1C11A971004A7B5A /* face_detection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = face_detection.cpp; sourceTree = "<group>"; };
+		CDA3A6C01C11A971004A7B5A /* face_detection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = face_detection.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD027A901BFF444800EAFB37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD066BE81C238F230019667C /* libopencv_contrib.2.4.11.dylib in Frameworks */,
+				CD066BEB1C238F230019667C /* libopencv_core.2.4.11.dylib in Frameworks */,
+				CD066BDC1C238E6A0019667C /* libopencv_highgui.2.4.11.dylib in Frameworks */,
+				CD066C241C2390340019667C /* libboost_system.a in Frameworks */,
+				CD76CE171D2299AE00EED821 /* libglog.a in Frameworks */,
+				CD066BD41C238E050019667C /* libcaffe.so in Frameworks */,
+				CD066BD31C238E050019667C /* libcaffe.a in Frameworks */,
+				CD066BE11C238E6A0019667C /* libopencv_imgproc.2.4.11.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD027A8A1BFF444800EAFB37 = {
+			isa = PBXGroup;
+			children = (
+				CD76CE191D2299B600EED821 /* gloglib */,
+				CD066C1D1C2390110019667C /* boostlib */,
+				CD066BD51C238E1D0019667C /* opencvlib */,
+				CD027D2B1C01E3D500EAFB37 /* caffelib */,
+				CD027A951BFF444800EAFB37 /* integrated_caffe */,
+				CD027A941BFF444800EAFB37 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD027A941BFF444800EAFB37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD027A931BFF444800EAFB37 /* integrated_caffe */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD027A951BFF444800EAFB37 /* integrated_caffe */ = {
+			isa = PBXGroup;
+			children = (
+				CD027A961BFF444800EAFB37 /* main.cpp */,
+				CDA3A6BF1C11A971004A7B5A /* face_detection.cpp */,
+				CDA3A6C01C11A971004A7B5A /* face_detection.hpp */,
+				CDA0AAF71C0A8DF800A67EB9 /* DataTransformer.cpp */,
+				CDA0AAF81C0A8DF800A67EB9 /* DataTransformer.hpp */,
+			);
+			path = integrated_caffe;
+			sourceTree = "<group>";
+		};
+		CD027D2B1C01E3D500EAFB37 /* caffelib */ = {
+			isa = PBXGroup;
+			children = (
+				CD066BD11C238E050019667C /* libcaffe.a */,
+				CD066BD21C238E050019667C /* libcaffe.so */,
+			);
+			name = caffelib;
+			sourceTree = "<group>";
+		};
+		CD066BD51C238E1D0019667C /* opencvlib */ = {
+			isa = PBXGroup;
+			children = (
+				CD066BE21C238F230019667C /* libopencv_contrib.2.4.11.dylib */,
+				CD066BE51C238F230019667C /* libopencv_core.2.4.11.dylib */,
+				CD066BD61C238E6A0019667C /* libopencv_highgui.2.4.11.dylib */,
+				CD066BDB1C238E6A0019667C /* libopencv_imgproc.2.4.11.dylib */,
+			);
+			name = opencvlib;
+			sourceTree = "<group>";
+		};
+		CD066C1D1C2390110019667C /* boostlib */ = {
+			isa = PBXGroup;
+			children = (
+				CD066C201C2390340019667C /* libboost_system.a */,
+			);
+			name = boostlib;
+			sourceTree = "<group>";
+		};
+		CD76CE191D2299B600EED821 /* gloglib */ = {
+			isa = PBXGroup;
+			children = (
+				CD76CE161D2299AE00EED821 /* libglog.a */,
+			);
+			name = gloglib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD027A921BFF444800EAFB37 /* integrated_caffe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD027A9A1BFF444800EAFB37 /* Build configuration list for PBXNativeTarget "integrated_caffe" */;
+			buildPhases = (
+				CD027A8F1BFF444800EAFB37 /* Sources */,
+				CD027A901BFF444800EAFB37 /* Frameworks */,
+				CD027A911BFF444800EAFB37 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = integrated_caffe;
+			productName = integrated_caffe;
+			productReference = CD027A931BFF444800EAFB37 /* integrated_caffe */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD027A8B1BFF444800EAFB37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = Louie;
+				TargetAttributes = {
+					CD027A921BFF444800EAFB37 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = CD027A8E1BFF444800EAFB37 /* Build configuration list for PBXProject "integrated_caffe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CD027A8A1BFF444800EAFB37;
+			productRefGroup = CD027A941BFF444800EAFB37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD027A921BFF444800EAFB37 /* integrated_caffe */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD027A8F1BFF444800EAFB37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD027A971BFF444800EAFB37 /* main.cpp in Sources */,
+				CDA3A6C11C11A971004A7B5A /* face_detection.cpp in Sources */,
+				CDA0AAFB1C0A8DF800A67EB9 /* DataTransformer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CD027A981BFF444800EAFB37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CD027A991BFF444800EAFB37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CD027A9B1BFF444800EAFB37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/Users/liuyang/caffe/include/,
+					/usr/local/Cellar/openblas/0.2.15/include,
+					"/Developer/NVIDIA/CUDA-7.5/include",
+				);
+				LD_RUNPATH_SEARCH_PATHS = /Users/liuyang/caffe/.build_release/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/openblas/0.2.15/lib,
+					/usr/local/Cellar/boost/1.59.0/lib,
+					/usr/local/Cellar/glog/0.3.4/lib,
+					/Users/liuyang/caffe/.build_release/lib,
+					/usr/local/Cellar/libpng/1.6.18/lib,
+					/usr/local/Cellar/xz/5.2.2/lib,
+					/usr/local/Cellar/jpeg/8d/lib,
+					/usr/local/Cellar/openexr/2.2.0/lib,
+					/usr/local/Cellar/ilmbase/2.2.0/lib,
+					/usr/local/Cellar/libtiff/4.0.6/lib,
+					/usr/local/Cellar/isl/0.14.1/lib,
+					/usr/local/Cellar/libmpc/1.0.3/lib,
+					/usr/local/Cellar/mpfr/3.1.3/lib,
+					/usr/local/Cellar/gmp/6.0.0a/lib,
+					/usr/local/Cellar/hdf5/1.8.15/lib,
+					/usr/local/Cellar/szip/2.1/lib,
+					/usr/local/Cellar/leveldb/1.18/lib,
+					/usr/local/Cellar/snappy/1.1.2/lib,
+					/usr/local/Cellar/lmdb/0.9.14/lib,
+					/usr/local/Cellar/gflags/2.1.2/lib,
+					/usr/local/Cellar/gd/2.1.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CD027A9C1BFF444800EAFB37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/Users/liuyang/caffe/include/,
+					/usr/local/Cellar/openblas/0.2.15/include,
+					"/Developer/NVIDIA/CUDA-7.5/include",
+				);
+				LD_RUNPATH_SEARCH_PATHS = /Users/liuyang/caffe/.build_release/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/openblas/0.2.15/lib,
+					/usr/local/Cellar/boost/1.59.0/lib,
+					/usr/local/Cellar/glog/0.3.4/lib,
+					/Users/liuyang/caffe/.build_release/lib,
+					/usr/local/Cellar/libpng/1.6.18/lib,
+					/usr/local/Cellar/xz/5.2.2/lib,
+					/usr/local/Cellar/jpeg/8d/lib,
+					/usr/local/Cellar/openexr/2.2.0/lib,
+					/usr/local/Cellar/ilmbase/2.2.0/lib,
+					/usr/local/Cellar/libtiff/4.0.6/lib,
+					/usr/local/Cellar/isl/0.14.1/lib,
+					/usr/local/Cellar/libmpc/1.0.3/lib,
+					/usr/local/Cellar/mpfr/3.1.3/lib,
+					/usr/local/Cellar/gmp/6.0.0a/lib,
+					/usr/local/Cellar/hdf5/1.8.15/lib,
+					/usr/local/Cellar/szip/2.1/lib,
+					/usr/local/Cellar/leveldb/1.18/lib,
+					/usr/local/Cellar/snappy/1.1.2/lib,
+					/usr/local/Cellar/lmdb/0.9.14/lib,
+					/usr/local/Cellar/gflags/2.1.2/lib,
+					/usr/local/Cellar/gd/2.1.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD027A8E1BFF444800EAFB37 /* Build configuration list for PBXProject "integrated_caffe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD027A981BFF444800EAFB37 /* Debug */,
+				CD027A991BFF444800EAFB37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD027A9A1BFF444800EAFB37 /* Build configuration list for PBXNativeTarget "integrated_caffe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD027A9B1BFF444800EAFB37 /* Debug */,
+				CD027A9C1BFF444800EAFB37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD027A8B1BFF444800EAFB37 /* Project object */;
+}
