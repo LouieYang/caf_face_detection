@@ -18,3 +18,5 @@ caffe Model could download [here](http://pan.baidu.com/s/1i4Qokhn)
 [1] https://github.com/guoyilin/FaceDetection_CNN
 
 [2] http://arxiv.org/abs/1502.02766
+
+[3] http://caffe.berkeleyvision.org
